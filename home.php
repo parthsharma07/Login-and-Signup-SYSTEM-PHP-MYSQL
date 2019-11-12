@@ -11,6 +11,15 @@ if (!isset($_SESSION['loggedin'])) {
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript">
+		function testJS() {
+    localStorage.setItem("from", document.getElementById('myListfrom').value);
+    localStorage.setItem("to", document.getElementById('myListto').value);
+    url = 'traindetail.html';
+
+    document.location.href = url;
+}
+	</script>
 	<title></title>
 	<style type="text/css">
 		*{
@@ -24,9 +33,20 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <body style="background-image:url(homepage.jpg);background-size: cover;padding: 0;">
 	<div style="background-color: black; opacity: 0.7; padding-top: 20px;padding-bottom: 20px;margin-top: 10px;width: 100%;height: 40px;">
-		<p style="color: white;font-size: 20px; margin-left: 30px;margin-top: 10px;">TRAVELEXPRESS TRAIN RESERVATION FACILITIES</p>
-		<a href="loginpage.html"><strong><p style="color: white;margin-left: 1300px;margin-top: -22px;font-size: 20px;"><strong>Login</strong></p></strong></a>
-		<a href="newaccount.html"><strong><p style="color: white;margin-left: 1400px;margin-top: -24px;font-size: 20px;"><strong>SignUp</strong></p></strong></a>
+		<p style="color: white;font-size: 20px; margin-left: 30px;margin-top: 10px;">PASHA TRAIN RESERVATION FACILITIES</p>
+
+<?php
+if(!isset($_SESSION['loggedin'])){
+	echo '<a href="loginpage.html"><strong><p id="log" style="color: white;margin-left: 1300px;margin-top: -22px;font-size: 20px;"><strong>Login</strong></p></strong></a>
+		<a href="newaccount.html"><strong><p style="color: white;margin-left: 1400px;margin-top: -24px;font-size: 20px;"><strong>SignUp</strong></p></strong></a>';
+}else {
+	echo '<a href="loginpage.html"><strong><p id="log" style="color: white;margin-left: 1300px;margin-top: -22px;font-size: 20px;"><strong>Logged In</strong></p></strong></a>
+		<a href="newaccount.html"><strong><p style="color: white;margin-left: 1400px;margin-top: -24px;font-size: 20px;"><strong>SignUp</strong></p></strong></a>';
+}
+
+?>
+
+		
 	</div>
 	<div style="background-color: white;opacity: 0.7;padding-top: 10px;padding-bottom: 13px;margin-top: 2px;width: 100%;height: 30px;">
 		<a href=""><strong><p style="color: black;margin-left: 30px;margin-top: 9px;font-size: 18px;">Home</p></strong></a>
@@ -37,38 +57,38 @@ if (!isset($_SESSION['loggedin'])) {
 	<strong><p style="font-size: 80px;font-family: arial;color: white;opacity: 0.7;margin-top: 180px;margin-left: 100px;font-stretch: 8px;">THE BEST WAY<br>TO GET AWAY</p></strong>
 	<div style="background-color: black;margin-bottom: 100px; opacity: 0.7; padding-top: 40px;padding-bottom: 20px;margin-top: -200px;margin-left: 850px;width: 35%;height: 300px;">
 		<p style="color: white;opacity: 0.9;font-size: 25px;margin-top: -20px;margin-left: 15px;">Route</p>
-		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 15px;margin-top: 5px;color: black;" id = "myList">
+		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 15px;margin-top: 5px;color: black;" id = "myListfrom">
 
 <option style="color: black;font-size: 15px;" value = "From" disabled selected>From</option>
 
-<option style="color: black;font-size: 15px;" value = "1">Madhya Pradesh</option>
+<option style="color: black;font-size: 15px;" value = "Madhya Pradesh">Madhya Pradesh</option>
 
-<option style="color: black;font-size: 15px;" value = "2">Maharashtra</option>
+<option style="color: black;font-size: 15px;" value = "Maharashtra">Maharashtra</option>
 
-<option style="color: black;font-size: 15px;" value = "3">Goa</option>
+<option style="color: black;font-size: 15px;" value = "Goa">Goa</option>
 
-<option style="color: black;font-size: 15px;" value = "4">Punjab</option>
+<option style="color: black;font-size: 15px;" value = "Punjab">Punjab</option>
 
-<option style="color: black;font-size: 15px;" value = "5">Haryana</option>
+<option style="color: black;font-size: 15px;" value = "Haryana">Haryana</option>
 
-<option style="color: black;font-size: 15px;" value = "6">Bihar</option>
+<option style="color: black;font-size: 15px;" value = "Bihar">Bihar</option>
 </select>
 
-		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 70px;margin-top: -14px;color: black;" id = "myList">
+		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 70px;margin-top: -14px;color: black;" id = "myListto">
 
 <option style="color: black;font-size: 15px;" value = "To" disabled selected>To</option>
 
-<option style="color: black;font-size: 15px;" value = "1">Madhya Pradesh</option>
+<option style="color: black;font-size: 15px;" value = "Madhya Pradesh">Madhya Pradesh</option>
 
-<option style="color: black;font-size: 15px;" value = "2">Maharashtra</option>
+<option style="color: black;font-size: 15px;" value = "Maharashtra">Maharashtra</option>
 
-<option style="color: black;font-size: 15px;" value = "3">Goa</option>
+<option style="color: black;font-size: 15px;" value = "Goa">Goa</option>
 
-<option style="color: black;font-size: 15px;" value = "4">Punjab</option>
+<option style="color: black;font-size: 15px;" value = "Punjab">Punjab</option>
 
-<option style="color: black;font-size: 15px;" value = "5">Haryana</option>
+<option style="color: black;font-size: 15px;" value = "Haryana">Haryana</option>
 
-<option style="color: black;font-size: 15px;" value = "6">Bihar</option>
+<option style="color: black;font-size: 15px;" value = "Bihar">Bihar</option>
 </select>
 
 		<p style="color: white;opacity: 0.9;font-size: 25px;margin-top: 15px;margin-left: 15px;">Travelling Date</p>
@@ -109,7 +129,7 @@ if (!isset($_SESSION['loggedin'])) {
 <option style="color: black;font-size: 15px;" value = "6">6</option>
 </select>
 
-		<center><input type="button" name="view trains" value="View Trains" style="border-radius: 5px;width: 40%;height: 40px;background-color: orange;opacity: 0.8;font-size: 20px; margin-top: 25px;color: black;" onclick=""></center>
+		<center><input type="button" name="view trains" value="View Trains" style="border-radius: 5px;width: 40%;height: 40px;background-color: orange;opacity: 0.8;font-size: 20px; margin-top: 25px;color: black;" onclick="testJS()"></center>
 	</div>
 </body>
 </html>
