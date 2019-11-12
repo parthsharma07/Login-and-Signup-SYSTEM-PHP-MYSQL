@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+		var from = localStorage.getItem("from");
+		var to = localStorage.getItem("to");
+		var firstword = from + "-" + to;
+		if (firstword.length == 0) {
+       			 return;
+    		} else {
+        		var xmlhttp = new XMLHttpRequest();
+        		xmlhttp.onreadystatechange = function() {
+         	   if (this.readyState == 4 && this.status == 200) {
+               		$(document).ready(function(){
+            			$(".parent").empty();
+            			//$("table tbody").empty();
+            		});
+            		console.log(this.responseText);
+            		var names = this.responseText.split("%");
+					var name;
+					$(document).ready(function(){
+						for(name of names){
+							//$("table tbody").append("<tr><th>"+ name + "</th></tr>").attr("class","cancer_names");
+							var i=0;
+							var details = name.split("~");
+							var detail;
+							var Stringfield = '';
+							for(detail of details){
+								//window.alert(detail);
+								if(i == 1){
+									Stringfield = Stringfield + '<div style="width: 80%;height: 90px;background-color: white;opacity: 0.9;padding-top: 10px;border-left: 3px solid blue;border-right: 3px solid blue;margin-left: 20px;margin-top: 5px;"><p style="font-size: 25px;margin-left: 20px;margin-top: 5px;">' + detail + 
+									'</p><p style="font-size: 15px;margin-left: 180px;margin-top: -47px;">('; 
+								}
+								if(i==2){
+									Stringfield = Stringfield + detail + ')</p><p style="font-size: 10px;margin-left: 22px;margin-top: -4px;">from:</p><strong><p style="font-size: 15px;margin-left: 50px;margin-top: -25px;">';
+								}
+								if(i == 3){
+									Stringfield = Stringfield + detail + '</p></strong><p style="font-size: 10px;margin-left: 135px;margin-top: -30px;">to:</p><strong><p style="font-size: 15px;margin-left: 150px;margin-top: -25px;">';
+								}
+								if(i == 4){
+									Stringfield = Stringfield + detail + '</p></strong><p style="font-size: 10px;margin-left: 22px;margin-top: -5px;">departs on:</p><strong><p style="font-size: 15px;margin-left: 73px;margin-top: -26px;">';
+								}
+								if(i == 5){
+									Stringfield = Stringfield + detail + '</p></strong><p style="font-size: 20px;margin-left: 400px;margin-top: -85px;">Departure</p><p style="font-size: 20px;margin-left: 413px;margin-top: -10px;">';
+								}
+								if(i == 6){
+									Stringfield = Stringfield + detail + '</p><p style="font-size: 20px;margin-left: 700px;margin-top: -75px;">Arrival</p><p style="font-size: 20px;margin-left: 705px;margin-top: -10px;">';
+								}
+								if(i == 7){
+									Stringfield = Stringfield + detail + '</p><div style="float: right;height: 90px;width: 35%;background-attachment: white;opacity: 0.9;margin-top: -120px;"><select style="border-radius: 5px;width: 45%;height: 50px;background-color: white;opacity: 0.8;font-size: 20px;position: static;margin-left: 20px;margin-top: 50px;color: black;" id = "CoachList"><option style="color: black;font-size: 15px;" value = "Coach" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "1">General</option><option style="color: black;font-size: 15px;" value = "2">Sleeper</option><option style="color: black;font-size: 15px;" value = "3">AC 3 Tier</option><option style="color: black;font-size: 15px;" value = "4">AC 2 Tier</option><option style="color: black;font-size: 15px;" value = "5">AC 1 Tier</option></select><input type="button" name="get avail" style="float: right;border-radius: 5px;height: 50px;width: 45%;background-color: #62b1f6;position: static;margin-left: 220px;margin-right: 10px;margin-top: -51px;" onclick="" value="Get Availability"></div></div>';
+								}
+								i = i+1;
+							}
+    						$(".parent").append(Stringfield);
+    					}
+  					});
+           		}
+        	};
+        	xmlhttp.open("GET", "traindata.php?q=" + firstword, true);
+        	xmlhttp.send();
+    		}
+    	}
+		
+	</script>
+	<style type="text/css">
+		.pd {
+			width: 80%;
+			height: 90px;
+			background-color: white;
+			opacity: 0.9;
+			padding-top: 10px;
+			border-left: 3px solid blue;
+			border-right: 3px solid blue;
+			margin-left: 20px;
+			margin-top: 5px;
+		}
+		.pehla {
+			font-size: 25px;
+			margin-left: 20px;
+			margin-top: 5px;
+		}
+		.doosra {
+			font-size: 15px;
+			margin-left: 150px;
+			margin-top: -47px;
+		}
+		.teesra {
+			font-size: 10px;
+			margin-left: 22px;
+			margin-top: -4px;
+		}
+		.fourth {
+			font-size: 15px;
+			margin-left: 50px;
+			margin-top: -25px;
+		}
+		.fifth {
+			font-size: 10px;
+			margin-left: 95px;
+			margin-top: -30px;
+		}
+		.sixth {
+			font-size: 15px;
+			margin-left: 115px;
+			margin-top: -25px;
+		}
+		.seventh {
+			font-size: 10px;
+			margin-left: 22px;
+			margin-top: -5px;
+		}
+		.eighth {
+			font-size: 15px;
+			margin-left: 73px;
+			margin-top: -26px;
+		}
+		.ninth {
+			font-size: 20px;
+			margin-left: 400px;
+			margin-top: -85px;
+		}
+		.tenth {
+			font-size: 20px;
+			margin-left: 413px;
+			margin-top: -10px;
+		}
+		.eleventh {
+			font-size: 20px;
+			margin-left: 700px;
+			margin-top: -75px;
+		}
+		.twelth {
+			font-size: 20px;
+			margin-left: 705px;
+			margin-top: -10px;
+		}
+		.subdiv {
+			float: right;
+			height: 90px;
+			width: 35%;
+			background-attachment: white;
+			opacity: 0.9;
+			margin-top: -120px;
+		}
+		.selectstyle {
+			border-radius: 5px;
+			width: 45%;
+			height: 50px;
+			background-color: white;
+			opacity: 0.8;
+			font-size: 20px;
+			position: static;
+			margin-left: 20px;
+			margin-top: 50px;
+			color: black;
+		}
+		.optstyle {
+			color: black;
+			font-size: 15px;
+		}
+		.inputstyle {
+			float: right;
+			border-radius: 5px;
+			height: 50px;width: 45%;
+			background-color: #62b1f6;
+			position: static;
+			margin-left: 220px;
+			margin-right: 10px;
+			margin-top: -51px;
+		}
+	</style>
+	<title></title>
+</head>
+<body style="background-image:url(traindetail.jpg);background-size: cover;">
+	<p style="font-size: 30px;color: white;margin-left: 20px;">Available trains:</p>
+	<a href="bookingpage.html" style="text-decoration: none;"><p style="font-size: 30px;color: white;margin-left: 1300px;margin-top: -62px;">Goto Home</p></a>
+	<div class="parent">
+	<div class="pd">
+		<p class="pehla">Train name</p>
+		<p class="doosra">(train number)</p>
+		<p class="teesra">from:</p><strong><p class="fourth">City1</p></strong>
+		<p class="fifth" ">to:</p><strong><p class="sixth">City2</p></strong>
+		<p class="seventh">departs on:</p><strong><p class="eighth" ">Mon,Wed,Fri</p></strong>
+		<p class="ninth">Departure</p><p class="tenth">12:00</p>
+		<p class="eleventh">Arrival</p><p class="twelth">12:00</p>
+		<div class="subdiv">
+		<select class="selectstyle" id = "CoachList">
+
+			<option class="optstyle" value = "Coach" disabled selected>Coach</option>
+
+			<option class="optstyle" value = "1">General</option>
+
+			<option class="optstyle" value = "2">Sleeper</option>
+
+			<option class="optstyle" value = "3">AC 3 Tier</option>
+
+			<option class="optstyle" value = "4">AC 2 Tier</option>
+
+			<option class="optstyle" value = "5">AC 1 Tier</option>
+		</select>
+		<input type="button" name="get avail" class="inputstyle" onclick="" value="Get Availability">
+	</div>
+
+	</div>
+</div>
+</body>
+</html>
