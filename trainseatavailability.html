@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.card {
+			background-color: orange;
+			height: 30px;
+			width: 20%;
+			margin-right: 750px;
+			padding-top: 3px;
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+.cardone {
+			background-color: orange;
+			height: 30px;
+			width: 20%;
+			margin-left: -8px;
+			padding-top: 3px;
+			margin-top: -33px;
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.cardone:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+.cardtwo {
+			background-color: orange;
+			height: 30px;
+			width: 20%;
+			margin-left: 700px;
+			padding-top: 3px;
+			margin-top: -33px;
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.cardtwo:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+table,tr,th,td{
+border: 1px solid black; 
+}
+	</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+		var trname = localStorage.getItem("trainname");
+		var firstword = trname;
+		if (firstword.length == 0) {
+       			 return;
+    		} else {
+        		var xmlhttp = new XMLHttpRequest();
+        		xmlhttp.onreadystatechange = function() {
+         	   if (this.readyState == 4 && this.status == 200) {
+               		$(document).ready(function(){
+            			$(".parent").empty();
+            			//$("table tbody").empty();
+            		});
+            		console.log(this.responseText);
+            		var names = this.responseText.split("%");
+					var name;
+					$(document).ready(function(){
+						for(name of names){
+							//$("table tbody").append("<tr><th>"+ name + "</th></tr>").attr("class","cancer_names");
+							var i=1;
+							var details = name.split("~");
+							var detail;
+							var tname;
+							var Stringfield = '';
+							for(detail of details){
+								//window.alert(detail);
+								if(i == 1){
+									tname = detail;
+									Stringfield = Stringfield + '<p style="font-size: 50px;text-align: center;margin-top: 30px;color: black;">' + detail + 
+									'</p><div class="card"><p style="font-size: 20px;color: black;margin-right: 60px;margin-top: 2px;">'; 
+								}
+								if(i==2){
+									Stringfield = Stringfield + '<p style="font-size: 20px;color: black;margin-right: 60px;margin-top: -18px;">Train Number:</p><p style="font-size: 20px;color: black;margin-top: -41px;margin-left: 115px;">' + detail + '</p></div><div class="cardone"><p style="font-size: 20px;color: black;margin-right: 65px;margin-top: 2px;">Source:</p><p style="font-size: 20px;color: black;margin-top: -41px;margin-left: 62px;">';
+								}
+								if(i == 3){
+									Stringfield = Stringfield + detail + '</p></div><div class="cardtwo"><p style="font-size: 20px;color: black;margin-right: 60px;margin-top: 2px;">Destination:</p><p style="font-size: 20px;color: black;margin-top: -41px;margin-left: 85px;">';
+								}
+								if(i == 4){
+									Stringfield = Stringfield + detail + '</p></div><center><p style="font-size: 30px;color: #1261A0;">Availability Chart</p></center><table style="height: 40px;width: 90%;margin-top: 30px;"><tr style="font-size: 22px;"><th style="width: 20px;">Sr No.</th><th>Coach</th><th>Available</th><th>Waiting</th><th>RAC</th></tr><tr style="height: 15px;font-size: 18px;text-align: center;"><td>1.</td><td>General</td><td>';
+								}
+								if(i == 5){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i == 6){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i == 7){
+									Stringfield = Stringfield + detail + '</td></tr><tr style="height: 15px;font-size: 18px;text-align: center;"><td>2.</td><td>Sleeper</td><td>';
+								}
+								if(i == 8){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i == 9){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i == 10){
+									Stringfield = Stringfield + detail + '</td></tr><tr style="height: 15px;font-size: 18px;text-align: center;"><td>2.</td><td>AC 3 TIER</td><td>';
+								}
+								if(i == 11){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i == 12){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i == 13){
+									Stringfield = Stringfield + detail + '</td></tr><tr style="height: 15px;font-size: 18px;text-align: center;"><td>2.</td><td>AC 2 TIER</td><td>';
+								}
+								if(i == 14){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i == 15){
+									Stringfield = Stringfield + detail + '</td><td>';
+								}
+								if(i==16){
+									Stringfield = Stringfield + detail + '</td></tr></table><select style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;color: black;font-size: 20px; margin-right: 165px;margin-left: 200px;margin-top: 60px;color: black;" id = "myList" required><option style="color: black;font-size: 15px;" value = "From" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "1">General</option><option style="color: black;font-size: 15px;" value = "2">Sleeper</option><option style="color: black;font-size: 15px;" value = "3">AC 3 TIER</option><option style="color: black;font-size: 15px;" value = "4">AC 2 TIER</option></select><input type="button" name="book tickets" value="Book Tickets" style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;font-size: 20px; margin-top: -40px;margin-right: 200px;color: black;" onclick="">';
+								}
+								i = i+1;
+							}
+    						$(".parent").append(Stringfield);
+    					}
+  					});
+           		}
+        	};
+        	xmlhttp.open("GET", "trainseatdata.php?q=" + firstword, true);
+        	xmlhttp.send();
+    		}
+    	}
+	</script>
+	<title></title>
+</head>
+<body style="background-image:url(trainavail.jpg);background-size: cover;">
+	<center>
+	<div class="parent" style="height: 600px;border-radius: 5px;width: 80%;opacity: 0.8;background-color: white;margin-top: 60px;align-self: center;padding-top: 20px;">
+		<p style="font-size: 50px;text-align: center;margin-top: 30px;color: black;">Train Name</p>
+		<div class="card">
+			<p style="font-size: 20px;color: black;margin-right: 60px;margin-top: 2px;">Train Number:</p>
+			<p style="font-size: 20px;color: black;margin-top: -41px;margin-left: 105px;">18024</p>
+		</div>
+		<div class="cardone">
+			<p style="font-size: 20px;color: black;margin-right: 65px;margin-top: 2px;">Source:</p>
+			<p style="font-size: 20px;color: black;margin-top: -41px;margin-left: 52px;">Dewas</p>
+		</div>
+		<div class="cardtwo">
+			<p style="font-size: 20px;color: black;margin-right: 60px;margin-top: 2px;">Destination:</p>
+			<p style="font-size: 20px;color: black;margin-top: -41px;margin-left: 85px;">Delhi</p>
+		</div>
+		<center><p style="font-size: 30px;color: #1261A0;">Availability Chart</p></center>
+		<table style="height: 40px;width: 90%;margin-top: 30px;">
+			<tr style="font-size: 22px;"><th style="width: 20px;">Sr No.</th><th>Coach</th><th>Available</th><th>Waiting</th><th>RAC</th></tr>
+			<tr style="height: 15px;font-size: 18px;text-align: center;"><td>1.</td><td>General</td><td>23</td><td>45</td><td>40</td></tr>
+			<tr style="height: 15px;font-size: 18px;text-align: center;"><td>2.</td><td>Sleeper</td><td>23</td><td>45</td><td>40</td></tr>
+			<tr style="height: 15px;font-size: 18px;text-align: center;"><td>3.</td><td>AC 3 TIER</td><td>23</td><td>45</td><td>40</td></tr>
+			<tr style="height: 15px;font-size: 18px;text-align: center;"><td>4.</td><td>AC 2 TIER</td><td>23</td><td>45</td><td>40</td></tr>
+		</table>
+		<select style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;color: black;font-size: 20px; margin-right: 165px;margin-left: 200px;margin-top: 60px;color: black;" id = "myList" required>
+
+			<option style="color: black;font-size: 15px;" value = "From" disabled selected>Coach</option>
+
+			<option style="color: black;font-size: 15px;" value = "1">General</option>
+
+			<option style="color: black;font-size: 15px;" value = "2">Sleeper</option>
+
+			<option style="color: black;font-size: 15px;" value = "3">AC 3 TIER</option>
+
+			<option style="color: black;font-size: 15px;" value = "4">AC 2 TIER</option>
+		</select>
+		<input type="button" name="book tickets" value="Book Tickets" style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;font-size: 20px; margin-top: -40px;margin-right: 200px;color: black;" onclick="">
+	</div></center>
+</body>
+</html>
