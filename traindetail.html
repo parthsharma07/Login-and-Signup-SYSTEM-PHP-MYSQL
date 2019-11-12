@@ -3,6 +3,13 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript">
+		function sendNext(e){
+			var id = e.getAttribute("id");
+			localStorage.setItem("trainname", id);
+			url = 'trainseatavailability.html';
+
+            document.location.href = url;
+		}
 		window.onload = function(){
 		var from = localStorage.getItem("from");
 		var to = localStorage.getItem("to");
@@ -26,12 +33,14 @@
 							var i=0;
 							var details = name.split("~");
 							var detail;
+							var tname;
 							var Stringfield = '';
 							for(detail of details){
 								//window.alert(detail);
 								if(i == 1){
-									Stringfield = Stringfield + '<div style="width: 80%;height: 90px;background-color: white;opacity: 0.9;padding-top: 10px;border-left: 3px solid blue;border-right: 3px solid blue;margin-left: 20px;margin-top: 5px;"><p style="font-size: 25px;margin-left: 20px;margin-top: 5px;">' + detail + 
-									'</p><p style="font-size: 15px;margin-left: 180px;margin-top: -47px;">('; 
+									tname = detail;
+									Stringfield = Stringfield + '<div id="'+detail+'" style="width: 80%;height: 90px;background-color: white;opacity: 0.9;padding-top: 10px;border-left: 3px solid blue;border-right: 3px solid blue;margin-left: 20px;margin-top: 5px;"><p style="font-size: 25px;margin-left: 20px;margin-top: 5px;">' + detail + 
+									'</p><p style="font-size: 15px;margin-left: 210px;margin-top: -47px;">('; 
 								}
 								if(i==2){
 									Stringfield = Stringfield + detail + ')</p><p style="font-size: 10px;margin-left: 22px;margin-top: -4px;">from:</p><strong><p style="font-size: 15px;margin-left: 50px;margin-top: -25px;">';
@@ -49,7 +58,7 @@
 									Stringfield = Stringfield + detail + '</p><p style="font-size: 20px;margin-left: 700px;margin-top: -75px;">Arrival</p><p style="font-size: 20px;margin-left: 705px;margin-top: -10px;">';
 								}
 								if(i == 7){
-									Stringfield = Stringfield + detail + '</p><div style="float: right;height: 90px;width: 35%;background-attachment: white;opacity: 0.9;margin-top: -120px;"><select style="border-radius: 5px;width: 45%;height: 50px;background-color: white;opacity: 0.8;font-size: 20px;position: static;margin-left: 20px;margin-top: 50px;color: black;" id = "CoachList"><option style="color: black;font-size: 15px;" value = "Coach" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "1">General</option><option style="color: black;font-size: 15px;" value = "2">Sleeper</option><option style="color: black;font-size: 15px;" value = "3">AC 3 Tier</option><option style="color: black;font-size: 15px;" value = "4">AC 2 Tier</option><option style="color: black;font-size: 15px;" value = "5">AC 1 Tier</option></select><input type="button" name="get avail" style="float: right;border-radius: 5px;height: 50px;width: 45%;background-color: #62b1f6;position: static;margin-left: 220px;margin-right: 10px;margin-top: -51px;" onclick="" value="Get Availability"></div></div>';
+									Stringfield = Stringfield + detail + '</p><div style="float: right;height: 90px;width: 35%;background-attachment: white;opacity: 0.9;margin-top: -120px;"><select style="border-radius: 5px;width: 45%;height: 50px;background-color: white;opacity: 0.8;font-size: 20px;position: static;margin-left: 20px;margin-top: 50px;color: black;" id = "CoachList"><option style="color: black;font-size: 15px;" value = "Coach" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "1">General</option><option style="color: black;font-size: 15px;" value = "2">Sleeper</option><option style="color: black;font-size: 15px;" value = "3">AC 3 Tier</option><option style="color: black;font-size: 15px;" value = "4">AC 2 Tier</option><option style="color: black;font-size: 15px;" value = "5">AC 1 Tier</option></select><input type="button" id="'+tname+'" name="get avail" style="float: right;border-radius: 5px;height: 50px;width: 45%;background-color: #62b1f6;position: static;margin-left: 220px;margin-right: 10px;margin-top: -51px;" onclick="sendNext(this)" value="Get Availability"></div></div>';
 								}
 								i = i+1;
 							}
@@ -175,7 +184,7 @@
 </head>
 <body style="background-image:url(traindetail.jpg);background-size: cover;">
 	<p style="font-size: 30px;color: white;margin-left: 20px;">Available trains:</p>
-	<a href="bookingpage.html" style="text-decoration: none;"><p style="font-size: 30px;color: white;margin-left: 1300px;margin-top: -62px;">Goto Home</p></a>
+	<a href="home.php" style="text-decoration: none;"><p style="font-size: 30px;color: white;margin-left: 1300px;margin-top: -62px;">Goto Home</p></a>
 	<div class="parent">
 	<div class="pd">
 		<p class="pehla">Train name</p>
