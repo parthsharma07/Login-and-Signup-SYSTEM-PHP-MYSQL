@@ -49,10 +49,10 @@ if(!isset($_SESSION['loggedin'])){
 		
 	</div>
 	<div style="background-color: white;opacity: 0.7;padding-top: 10px;padding-bottom: 13px;margin-top: 2px;width: 100%;height: 30px;">
-		<a href=""><strong><p style="color: black;margin-left: 30px;margin-top: 9px;font-size: 18px;">Home</p></strong></a>
+		<a href="home.php"><strong><p style="color: black;margin-left: 30px;margin-top: 9px;font-size: 18px;">Home</p></strong></a>
 		<a href=""><strong><p style="color: black;margin-left: 110px;margin-top: -21px;font-size: 18px;">Your Bookings</p></strong></a>
-		<a href=""><strong><p style="color: black;margin-left: 250px;margin-top: -20px;font-size: 18px;">About Us</p></strong></a>
-		<a href=""><strong><p style="color: black;margin-left: 350px;margin-top: -20px;font-size: 18px;">Contact</p></strong></a>
+		<a href="aboutus.html"><strong><p style="color: black;margin-left: 250px;margin-top: -20px;font-size: 18px;">About Us</p></strong></a>
+		<a href="aboutus.html"><strong><p style="color: black;margin-left: 350px;margin-top: -20px;font-size: 18px;">Contact</p></strong></a>
 	</div>
 	<strong><p style="font-size: 80px;font-family: arial;color: white;opacity: 0.7;margin-top: 180px;margin-left: 100px;font-stretch: 8px;">THE BEST WAY<br>TO GET AWAY</p></strong>
 	<div style="background-color: black;margin-bottom: 100px; opacity: 0.7; padding-top: 40px;padding-bottom: 20px;margin-top: -200px;margin-left: 850px;width: 35%;height: 300px;">
