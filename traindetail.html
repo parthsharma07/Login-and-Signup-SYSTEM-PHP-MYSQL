@@ -5,7 +5,27 @@
 	<script type="text/javascript">
 		function sendNext(e){
 			var id = e.getAttribute("id");
-			localStorage.setItem("trainname", id);
+			var tokens = id.split("-");
+			var token;
+			var i=1;
+			for(token of tokens){
+				if(i == 1){
+					localStorage.setItem("trainname", token);
+				}
+				if(i == 2){
+					localStorage["trainNumber"] = token;
+					//localStorage.setItem("trainNumber", token);
+				}
+				if(i == 3){
+					localStorage["traindepart"] = token;
+					//localStorage.setItem("traindepart", token);
+				}
+				if(i == 4){
+					localStorage["trainarrive"] = token;
+					//localStorage.setItem("trainarrive", token);
+				}
+				i = i+1;
+			}
 			url = 'trainseatavailability.html';
 
             document.location.href = url;
@@ -29,11 +49,11 @@
 					var name;
 					$(document).ready(function(){
 						for(name of names){
-							//$("table tbody").append("<tr><th>"+ name + "</th></tr>").attr("class","cancer_names");
 							var i=0;
 							var details = name.split("~");
 							var detail;
 							var tname;
+							var tno,tdepart,tarrive;
 							var Stringfield = '';
 							for(detail of details){
 								//window.alert(detail);
@@ -43,6 +63,7 @@
 									'</p><p style="font-size: 15px;margin-left: 210px;margin-top: -47px;">('; 
 								}
 								if(i==2){
+									tno = detail;
 									Stringfield = Stringfield + detail + ')</p><p style="font-size: 10px;margin-left: 22px;margin-top: -4px;">from:</p><strong><p style="font-size: 15px;margin-left: 50px;margin-top: -25px;">';
 								}
 								if(i == 3){
@@ -55,10 +76,13 @@
 									Stringfield = Stringfield + detail + '</p></strong><p style="font-size: 20px;margin-left: 400px;margin-top: -85px;">Departure</p><p style="font-size: 20px;margin-left: 413px;margin-top: -10px;">';
 								}
 								if(i == 6){
+									tdepart = detail;
 									Stringfield = Stringfield + detail + '</p><p style="font-size: 20px;margin-left: 700px;margin-top: -75px;">Arrival</p><p style="font-size: 20px;margin-left: 705px;margin-top: -10px;">';
 								}
 								if(i == 7){
-									Stringfield = Stringfield + detail + '</p><div style="float: right;height: 90px;width: 35%;background-attachment: white;opacity: 0.9;margin-top: -120px;"><select style="border-radius: 5px;width: 45%;height: 50px;background-color: white;opacity: 0.8;font-size: 20px;position: static;margin-left: 20px;margin-top: 50px;color: black;" id = "CoachList"><option style="color: black;font-size: 15px;" value = "Coach" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "1">General</option><option style="color: black;font-size: 15px;" value = "2">Sleeper</option><option style="color: black;font-size: 15px;" value = "3">AC 3 Tier</option><option style="color: black;font-size: 15px;" value = "4">AC 2 Tier</option><option style="color: black;font-size: 15px;" value = "5">AC 1 Tier</option></select><input type="button" id="'+tname+'" name="get avail" style="float: right;border-radius: 5px;height: 50px;width: 45%;background-color: #62b1f6;position: static;margin-left: 220px;margin-right: 10px;margin-top: -51px;" onclick="sendNext(this)" value="Get Availability"></div></div>';
+									tarrive = detail;
+									var id = tname+"-"+tno+"-"+tdepart+"-"+tarrive;
+									Stringfield = Stringfield + detail + '</p><div style="float: right;height: 90px;width: 35%;background-attachment: white;opacity: 0.9;margin-top: -120px;"><select style="border-radius: 5px;width: 45%;height: 50px;background-color: white;opacity: 0.8;font-size: 20px;position: static;margin-left: 20px;margin-top: 50px;color: black;" id = "CoachList"><option style="color: black;font-size: 15px;" value = "Coach" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "1">General</option><option style="color: black;font-size: 15px;" value = "2">Sleeper</option><option style="color: black;font-size: 15px;" value = "3">AC 3 Tier</option><option style="color: black;font-size: 15px;" value = "4">AC 2 Tier</option><option style="color: black;font-size: 15px;" value = "5">AC 1 Tier</option></select><input type="button" id="'+id+'" name="get avail" style="float: right;border-radius: 5px;height: 50px;width: 45%;background-color: #62b1f6;position: static;margin-left: 220px;margin-right: 10px;margin-top: -51px;" onclick="sendNext(this)" value="Get Availability"></div></div>';
 								}
 								i = i+1;
 							}
