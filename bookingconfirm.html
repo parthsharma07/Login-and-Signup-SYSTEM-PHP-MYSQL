@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function putData(){
+			$.ajax({
+    type: 'post',
+    url: 'insert.php', 
+    data: {
+    	'user': localStorage.getItem("id"),
+        'trname': localStorage.getItem("trainname"), 
+        'number': localStorage.getItem("trainNumber"),
+        'source': localStorage.getItem("from"),
+        'destination': localStorage.getItem("to"),
+        'time': localStorage.getItem("boardingDate") +" "+ localStorage["traindepart"]
+    },
+    success: function(data) { 
+        document.location.href = 'home.php';
+    }
+});
+			
+		}
+
+		window.onload = function(){
+			var bd = localStorage.getItem("boardingDate");
+			var ad = localStorage.getItem("boardingDate");
+			var bt = localStorage["traindepart"];
+			var at = localStorage["trainarrive"];
+			var trainto = localStorage.getItem("to");
+			var trainfrom = localStorage.getItem("from");
+			var adcount = localStorage.getItem("pcount");
+			var adults = parseInt(adcount);
+			var kidcount = localStorage.getItem("kcount");
+			var tname = localStorage.getItem("trainname");
+			var tno = localStorage["trainNumber"];
+			var coach = localStorage["Coach"];
+			var pfare,tfare;
+			if(coach == "General"){
+				pfare = 200;
+				tfare = adults * pfare;
+			}
+			if(coach == "Sleeper"){
+				pfare = 600;
+				tfare = adults * pfare;
+			}
+			if(coach == "AC 3 TIER"){
+				pfare = 1000;
+				tfare = adults * pfare;
+			}
+			if(coach == "AC 2 TIER"){
+				pfare = 2000;
+				tfare = adults * pfare;
+			}
+			$(document).ready(function () {
+				$(".parent").empty();
+				var StringField = '';
+				StringField = StringField + '<center><div style="opacity: 0.9;position: relative;width: 80%;height: 500px;margin-top: 50px;color: black;background-color: white;padding-top: 10px;border-radius: 5px;"><center><p style="font-size: 20px;margin-top: 20px;">BOOKING DETAILS</p></center><div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: left;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Boarding Date:</textarea><textarea name="time" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+bd+' '+bt+'</textarea></div><div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: right;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Boarding From:</textarea><textarea name="source" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+trainfrom+'</textarea></div><div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: left;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Arrival Date:</textarea><textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+ad+' '+at+'</textarea></div><div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: right;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Arrival At:</textarea><textarea name="destination" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+trainto+'</textarea></div><div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: left;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Train Name:</textarea><textarea name="trname" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+tname+'</textarea></div><div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: right;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Train Number:</textarea><textarea name="number" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+tno+'</textarea></div><div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: left;margin-top: 60px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 60%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Adult Passengers:</textarea><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 10%;border-color: #00000000;resize: none;float: left;margin-left: -160px;margin-top: 2px;font-family: aerial;">'+adcount+'</textarea></div><div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: right;margin-top: 60px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Kids:</textarea><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+kidcount+'</textarea></div><div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: left;margin-top: 30px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 60%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Individual Fare:</textarea><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 20%;border-color: #00000000;resize: none;float: left;margin-left: -160px;margin-top: 2px;font-family: aerial;">'+pfare+' INR</textarea></div><div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: right;margin-top: 30px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);"><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Total Fare:</textarea><textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">'+tfare+' INR</textarea></div><center><button style="width: 30%;height: 60px;margin-top: 60px;background-color: #F5C155;color: black;font-size: 20px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);" onclick="putData()">Pay And Book Seats</button></center></div></center>';
+				$(".parent").append(StringField);
+			});
+		}
+	</script>
+	<title></title>
+</head>
+<body  style="background-image:url(bookingconfirm.jpg);background-size: cover;">
+	<a href="home.php" style="text-decoration: none;"><p style="font-size: 30px;color: white;margin-left: 1300px;margin-top: 0px;">Goto Home</p></a>
+	<div class="parent">
+	<center><div style="opacity: 0.9;position: relative;width: 80%;height: 500px;margin-top: 50px;color: black;background-color: white;padding-top: 10px;border-radius: 5px;">
+		<center><p style="font-size: 20px;margin-top: 20px;">BOOKING DETAILS</p></center>
+		<div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: left;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Boarding Date:</textarea>
+			<textarea name="time" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">10/10/2019 12:00PM</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: right;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Boarding From:</textarea>
+			<textarea name="source" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">Dewas</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: left;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Arrival Date:</textarea>
+			<textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">12/10/2019 3:00PM</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: right;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Arrival At:</textarea>
+			<textarea name="destination" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">Chennai</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: left;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Train Name:</textarea>
+			<textarea name="trname" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">South Express</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: black;opacity: 0.6;float: right;margin-top: 2px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Train Number:</textarea>
+			<textarea name="number" disabled style="background-color: black;opacity: 0.6;font-size: 25px;color: white;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">180697</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: left;margin-top: 60px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 60%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Adult Passengers:</textarea>
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 10%;border-color: #00000000;resize: none;float: left;margin-left: -160px;margin-top: 2px;font-family: aerial;">4</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: right;margin-top: 60px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Kids:</textarea>
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">2</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: left;margin-top: 30px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 60%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Individual Fare:</textarea>
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 20%;border-color: #00000000;resize: none;float: left;margin-left: -160px;margin-top: 2px;font-family: aerial;">400 INR</textarea>
+		</div>
+		<div style="width: 49%;height: 40px;background-color: orange;opacity: 0.8;float: right;margin-top: 30px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);">
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 30%;border-color: #00000000;resize: none;float: left;margin-left: 80px;margin-top: 2px;font-family: aerial;">Total Fare:</textarea>
+			<textarea disabled style="background-color: orange;opacity: 0.6;font-size: 25px;color: black;height: 30px;width: 50%;border-color: #00000000;resize: none;float: left;margin-left: 20px;margin-top: 2px;font-family: aerial;">1600 INR</textarea>
+		</div>
+		<center><button style="width: 30%;height: 60px;margin-top: 60px;background-color: #F5C155;color: black;font-size: 20px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);" onclick="">Pay And Book Seats</button></center>
+	</div></center>
+</div>
+</body>
+</html>
