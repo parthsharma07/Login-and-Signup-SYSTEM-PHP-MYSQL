@@ -15,6 +15,9 @@ session_start();
 		function testJS() {
     localStorage.setItem("from", document.getElementById('myListfrom').value);
     localStorage.setItem("to", document.getElementById('myListto').value);
+    localStorage.setItem("pcount",document.getElementById('myListadults').value)
+    localStorage.setItem("kcount",document.getElementById('myListkids').value);
+    localStorage.setItem("boardingDate",document.getElementById('boardDate').value);
     url = 'traindetail.html';
 
     document.location.href = url;
@@ -40,7 +43,7 @@ if(!isset($_SESSION['loggedin'])){
 	echo '<a href="loginpage.html"><strong><p id="log" style="color: white;margin-left: 1300px;margin-top: -22px;font-size: 20px;"><strong>Login</strong></p></strong></a>
 		<a href="newaccount.html"><strong><p style="color: white;margin-left: 1400px;margin-top: -24px;font-size: 20px;"><strong>SignUp</strong></p></strong></a>';
 }else {
-	echo '<a href="loginpage.html"><strong><p id="log" style="color: white;margin-left: 1300px;margin-top: -22px;font-size: 20px;"><strong>Logged In</strong></p></strong></a>
+	echo '<a href="logout.php"><strong><p id="log" style="color: white;margin-left: 1300px;margin-top: -22px;font-size: 20px;"><strong>Logout</strong></p></strong></a>
 		<a href="newaccount.html"><strong><p style="color: white;margin-left: 1400px;margin-top: -24px;font-size: 20px;"><strong>SignUp</strong></p></strong></a>';
 }
 
@@ -50,7 +53,7 @@ if(!isset($_SESSION['loggedin'])){
 	</div>
 	<div style="background-color: white;opacity: 0.7;padding-top: 10px;padding-bottom: 13px;margin-top: 2px;width: 100%;height: 30px;">
 		<a href="home.php"><strong><p style="color: black;margin-left: 30px;margin-top: 9px;font-size: 18px;">Home</p></strong></a>
-		<a href=""><strong><p style="color: black;margin-left: 110px;margin-top: -21px;font-size: 18px;">Your Bookings</p></strong></a>
+		<a href="mybookings.html"><strong><p style="color: black;margin-left: 110px;margin-top: -21px;font-size: 18px;">Your Bookings</p></strong></a>
 		<a href="aboutus.html"><strong><p style="color: black;margin-left: 250px;margin-top: -20px;font-size: 18px;">About Us</p></strong></a>
 		<a href="aboutus.html"><strong><p style="color: black;margin-left: 350px;margin-top: -20px;font-size: 18px;">Contact</p></strong></a>
 	</div>
@@ -61,41 +64,57 @@ if(!isset($_SESSION['loggedin'])){
 
 <option style="color: black;font-size: 15px;" value = "From" disabled selected>From</option>
 
-<option style="color: black;font-size: 15px;" value = "Madhya Pradesh">Madhya Pradesh</option>
+<option style="color: black;font-size: 15px;" value = "Indore">Indore</option>
 
-<option style="color: black;font-size: 15px;" value = "Maharashtra">Maharashtra</option>
+<option style="color: black;font-size: 15px;" value = "Bhopal">Bhopal</option>
 
-<option style="color: black;font-size: 15px;" value = "Goa">Goa</option>
+<option style="color: black;font-size: 15px;" value = "Gwalior">Gwalior</option>
 
-<option style="color: black;font-size: 15px;" value = "Punjab">Punjab</option>
+<option style="color: black;font-size: 15px;" value = "Panji">Panji</option>
 
-<option style="color: black;font-size: 15px;" value = "Haryana">Haryana</option>
+<option style="color: black;font-size: 15px;" value = "Mumbai">Mumbai</option>
 
-<option style="color: black;font-size: 15px;" value = "Bihar">Bihar</option>
+<option style="color: black;font-size: 15px;" value = "Nagpur">Nagpur</option>
+
+<option style="color: black;font-size: 15px;" value = "Jalandhar">Jalandhar</option>
+
+<option style="color: black;font-size: 15px;" value = "Kurukshetra">Kurukshetra</option>
+
+<option style="color: black;font-size: 15px;" value = "Patna">Patna</option>
+
+<option style="color: black;font-size: 15px;" value = "Chandigarh">Chandigarh</option>
 </select>
 
 		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 70px;margin-top: -14px;color: black;" id = "myListto">
 
 <option style="color: black;font-size: 15px;" value = "To" disabled selected>To</option>
 
-<option style="color: black;font-size: 15px;" value = "Madhya Pradesh">Madhya Pradesh</option>
+<option style="color: black;font-size: 15px;" value = "Indore">Indore</option>
 
-<option style="color: black;font-size: 15px;" value = "Maharashtra">Maharashtra</option>
+<option style="color: black;font-size: 15px;" value = "Bhopal">Bhopal</option>
 
-<option style="color: black;font-size: 15px;" value = "Goa">Goa</option>
+<option style="color: black;font-size: 15px;" value = "Gwalior">Gwalior</option>
 
-<option style="color: black;font-size: 15px;" value = "Punjab">Punjab</option>
+<option style="color: black;font-size: 15px;" value = "Panji">Panji</option>
 
-<option style="color: black;font-size: 15px;" value = "Haryana">Haryana</option>
+<option style="color: black;font-size: 15px;" value = "Mumbai">Mumbai</option>
 
-<option style="color: black;font-size: 15px;" value = "Bihar">Bihar</option>
+<option style="color: black;font-size: 15px;" value = "Nagpur">Nagpur</option>
+
+<option style="color: black;font-size: 15px;" value = "Jalandhar">Jalandhar</option>
+
+<option style="color: black;font-size: 15px;" value = "Kurukshetra">Kurukshetra</option>
+
+<option style="color: black;font-size: 15px;" value = "Patna">Patna</option>
+
+<option style="color: black;font-size: 15px;" value = "Chandigarh">Chandigarh</option>
 </select>
 
 		<p style="color: white;opacity: 0.9;font-size: 25px;margin-top: 15px;margin-left: 15px;">Travelling Date</p>
-		<input style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 15px;margin-top: 5px;color: black;" type="Date" name="travel date" placeholder="Date">
+		<input style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 15px;margin-top: 5px;color: black;" type="Date" name="travel date" placeholder="Date" id="boardDate">
 
 		<p style="color: white;opacity: 0.9;font-size: 25px;margin-top: 15px;margin-left: 15px;">Travelling Persons</p>
-		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 15px;margin-top: 5px;color: black;" id = "myList">
+		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 15px;margin-top: 5px;color: black;" id = "myListadults">
 
 <option style="color: black;font-size: 15px;" value = "Adults" disabled selected>Adults</option>
 
@@ -112,7 +131,7 @@ if(!isset($_SESSION['loggedin'])){
 <option style="color: black;font-size: 15px;" value = "6">6</option>
 </select>
 
-		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 70px;margin-top: -14px;color: black;" id = "myList">
+		<select style="border-radius: 5px;width: 40%;height: 40px;background-color: white;opacity: 0.8;font-size: 20px; margin-left: 70px;margin-top: -14px;color: black;" id = "myListkids">
 
 <option style="color: black;font-size: 15px;" value = "Kids" disabled selected>Kids</option>
 
