@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function nextMove(){
+			url = 'bookingconfirm.html';
+
+            document.location.href = url;
+		}
+		window.onload = function(){
+			var count = localStorage.getItem("pcount");
+			var a = parseInt(count);
+			$(document).ready(function () {
+			$(".parent").empty();
+			for(var i=1;i<=a;i++){
+				var StringField = '';
+				StringField = StringField + '<center><div style="height: 170px;width: 90%;padding-top: 10px;margin-top: -5px;background-color: white;opacity: 0.8;border-radius: 5px;"><p style="font-size: 20px;color: black;margin-top: -3px;margin-right: 1215px;">Passenger</p><p style="font-size: 20px;color: black;margin-right: 1110px;margin-top: -42px;"> '+i+'</p><textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 11%;border-color: #00000000;resize: none;float: left;margin-left: 35px;font-family: aerial;">First Name</textarea><input type="text" name="firstName" placeholder="First Name" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;"><textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 11%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Last Name</textarea><input type="text" name="lastName" placeholder="Last Name" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;">		<textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 7%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Age</textarea><input type="number" name="age" placeholder="Age" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;"><br><br><br><textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 10%;border-color: #00000000;resize: none;float: left;margin-left: 30px;font-family: aerial;"> Email Id</textarea><input type="email" name="emailId" placeholder="Email Id" style="height: 30px;width: 190px;border-radius: 5px;font-size: 20px;float: left;"><textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 11%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Contact No.</textarea><input type="tel" name="contact" placeholder="Contact No" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;"><textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 8%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Gender</textarea><select style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;" id = "gender" required><option style="color: black;font-size: 15px;" value = "Gender" disabled selected>Gender</option><option style="color: black;font-size: 15px;" value = "1">Male</option><option style="color: black;font-size: 15px;" value = "2">Female</option><option style="color: black;font-size: 15px;" value = "3">Other</option></select>			</div></center>';
+				    $(".parent").append(StringField);
+			}
+		});
+		}
+	</script>
+
+</head>
+<body style="background-image:url(passengerdetails.jpg);background-size: cover;">
+	<center><p style="font-size: 40px;color: white;">PASSENGER DETAILS</p></center>
+	<div class="parent">
+	<center><div style="height: 170px;width: 90%;margin-top: 15px;background-color: white;opacity: 0.8;border-radius: 5px;">
+		<p style="font-size: 20px;color: black;margin-top: -3px;margin-right: 1215px;">Passenger</p><p style="font-size: 20px;color: black;margin-right: 1110px;margin-top: -42px;"> 1</p>
+		<textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 11%;border-color: #00000000;resize: none;float: left;margin-left: 35px;font-family: aerial;">First Name</textarea>
+		<input type="text" name="firstName" placeholder="First Name" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;">
+		<textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 11%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Last Name</textarea>
+		<input type="text" name="lastName" placeholder="Last Name" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;">		
+		<textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 7%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Age</textarea>
+		<input type="number" name="age" placeholder="Age" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;"><br><br><br>
+		<textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 10%;border-color: #00000000;resize: none;float: left;margin-left: 30px;font-family: aerial;"> Email Id</textarea>
+		<input type="email" name="emailId" placeholder="Email Id" style="height: 30px;width: 190px;border-radius: 5px;font-size: 20px;float: left;">
+		<textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 11%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Contact No.</textarea>
+		<input type="tel" name="contact" placeholder="Contact No" style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;">
+		<textarea disabled style="background-color: white;font-size: 20px;color: black;height: 30px;width: 8%;border-color: #00000000;resize: none;float: left;margin-left: 60px;font-family: aerial;"> Gender</textarea>
+		<select style="height: 30px;width: 180px;border-radius: 5px;font-size: 20px;float: left;" id = "gender" required>
+
+			<option style="color: black;font-size: 15px;" value = "Gender" disabled selected>Gender</option>
+
+			<option style="color: black;font-size: 15px;" value = "1">Male</option>
+
+			<option style="color: black;font-size: 15px;" value = "2">Female</option>
+
+			<option style="color: black;font-size: 15px;" value = "3">Other</option>
+		</select>			
+	</div></center>
+</div>
+<center><input type="button" name="book tickets" value="Next" style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;font-size: 20px; margin-top: 20px;color: black;" onclick="nextMove()"></center>
+</body>
+</html>
