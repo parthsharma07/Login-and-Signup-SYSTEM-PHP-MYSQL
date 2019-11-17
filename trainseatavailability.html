@@ -55,6 +55,14 @@ border: 1px solid black;
 	</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript">
+		function nextMove(){
+			localStorage["Coach"] = document.getElementById('myListCategory').value;
+			console.log(localStorage["Coach"]);
+			//localStorage.setItem("Coach", document.getElementById('myListCategory').value);
+			url = 'passengerdetails.html';
+
+            document.location.href = url;
+		}
 		window.onload = function(){
 		var trname = localStorage.getItem("trainname");
 		var firstword = trname;
@@ -129,7 +137,7 @@ border: 1px solid black;
 									Stringfield = Stringfield + detail + '</td><td>';
 								}
 								if(i==16){
-									Stringfield = Stringfield + detail + '</td></tr></table><select style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;color: black;font-size: 20px; margin-right: 165px;margin-left: 200px;margin-top: 60px;color: black;" id = "myList" required><option style="color: black;font-size: 15px;" value = "From" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "1">General</option><option style="color: black;font-size: 15px;" value = "2">Sleeper</option><option style="color: black;font-size: 15px;" value = "3">AC 3 TIER</option><option style="color: black;font-size: 15px;" value = "4">AC 2 TIER</option></select><input type="button" name="book tickets" value="Book Tickets" style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;font-size: 20px; margin-top: -40px;margin-right: 200px;color: black;" onclick="">';
+									Stringfield = Stringfield + detail + '</td></tr></table><select style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;color: black;font-size: 20px; margin-right: 165px;margin-left: 200px;margin-top: 60px;color: black;" id = "myListCategory" required><option style="color: black;font-size: 15px;" value = "Coach" disabled selected>Coach</option><option style="color: black;font-size: 15px;" value = "General">General</option><option style="color: black;font-size: 15px;" value = "Sleeper">Sleeper</option><option style="color: black;font-size: 15px;" value = "AC 3 TIER">AC 3 TIER</option><option style="color: black;font-size: 15px;" value = "AC 2 TIER">AC 2 TIER</option></select><input type="button" name="book tickets" value="Book Tickets" style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;font-size: 20px; margin-top: -40px;margin-right: 200px;color: black;" onclick="nextMove()">';
 								}
 								i = i+1;
 							}
@@ -169,17 +177,17 @@ border: 1px solid black;
 			<tr style="height: 15px;font-size: 18px;text-align: center;"><td>3.</td><td>AC 3 TIER</td><td>23</td><td>45</td><td>40</td></tr>
 			<tr style="height: 15px;font-size: 18px;text-align: center;"><td>4.</td><td>AC 2 TIER</td><td>23</td><td>45</td><td>40</td></tr>
 		</table>
-		<select style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;color: black;font-size: 20px; margin-right: 165px;margin-left: 200px;margin-top: 60px;color: black;" id = "myList" required>
+		<select style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;color: black;font-size: 20px; margin-right: 165px;margin-left: 200px;margin-top: 60px;color: black;" id = "myListCategory" required>
 
-			<option style="color: black;font-size: 15px;" value = "From" disabled selected>Coach</option>
+			<option style="color: black;font-size: 15px;" value = "Coach" disabled selected>Coach</option>
 
-			<option style="color: black;font-size: 15px;" value = "1">General</option>
+			<option style="color: black;font-size: 15px;" value = "General">General</option>
 
-			<option style="color: black;font-size: 15px;" value = "2">Sleeper</option>
+			<option style="color: black;font-size: 15px;" value = "Sleeper">Sleeper</option>
 
-			<option style="color: black;font-size: 15px;" value = "3">AC 3 TIER</option>
+			<option style="color: black;font-size: 15px;" value = "AC 3 TIER">AC 3 TIER</option>
 
-			<option style="color: black;font-size: 15px;" value = "4">AC 2 TIER</option>
+			<option style="color: black;font-size: 15px;" value = "AC 2 TIER">AC 2 TIER</option>
 		</select>
 		<input type="button" name="book tickets" value="Book Tickets" style="border-radius: 5px;width: 20%;height: 40px;background-color: #1261A0;opacity: 0.8;font-size: 20px; margin-top: -40px;margin-right: 200px;color: black;" onclick="">
 	</div></center>
