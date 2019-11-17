@@ -36,6 +36,7 @@ if ($stmt->num_rows > 0) {
 		session_regenerate_id();
 		$_SESSION['loggedin'] = TRUE;
 		$_SESSION['name'] = $_POST['firstname'];
+		$_SESSION['uname'] = $_POST['username'];
 		$_SESSION['id'] = $id;
 		header('Location: home.php');
 	} else {
