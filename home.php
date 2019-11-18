@@ -135,6 +135,8 @@ if(!isset($_SESSION['loggedin'])){
 
 <option style="color: black;font-size: 15px;" value = "Kids" disabled selected>Kids</option>
 
+<option style="color: black;font-size: 15px;" value = "0">0</option>
+
 <option style="color: black;font-size: 15px;" value = "1">1</option>
 
 <option style="color: black;font-size: 15px;" value = "2">2</option>
