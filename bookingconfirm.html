@@ -4,6 +4,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function putData(){
+			var pcount = localStorage.getItem("pcount");
+			var adultc = parseInt(pcount);
 			$.ajax({
     type: 'post',
     url: 'insert.php', 
@@ -13,7 +15,9 @@
         'number': localStorage.getItem("trainNumber"),
         'source': localStorage.getItem("from"),
         'destination': localStorage.getItem("to"),
-        'time': localStorage.getItem("boardingDate") +" "+ localStorage["traindepart"]
+        'time': localStorage.getItem("boardingDate") +" "+ localStorage["traindepart"],
+        'count': adultc,
+        'coach': localStorage["Coach"]
     },
     success: function(data) { 
         document.location.href = 'home.php';
