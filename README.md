@@ -1,4 +1,4 @@
-# Login-and-Signup-SYSTEM-PHP-MYSQL
+# Train Ticket Booking Website
 ## A train reservation website with user authentication system using php and mySQL.
 ### User can book his/her tickets in available trains.
 ### User can also check the availability of seats in different classes of available trains.
