@@ -26,7 +26,7 @@ session_start();
 	<title></title>
 	<style type="text/css">
 		*{
-			margin:0;
+			margin:2;
 			padding: 0;
 		}
 		a:link {
